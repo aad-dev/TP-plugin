@@ -1,0 +1,7 @@
+name: TeleportPlugin
+version: '1.0-SNAPSHOT'
+main: me.aaddev.teleportPlugin.TeleportPlugin
+api-version: '1.21'
+commands:
+  tp:
+    description: Teleport players
