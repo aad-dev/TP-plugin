@@ -10,4 +10,5 @@ public final class TeleportPlugin extends JavaPlugin {
         // Plugin startup logic
         getCommand("tp").setExecutor(new Teleport());
     }
+
 }
