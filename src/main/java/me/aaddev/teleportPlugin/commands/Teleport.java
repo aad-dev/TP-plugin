@@ -37,7 +37,20 @@ public class Teleport implements CommandExecutor {
                                                            // their name)
 
                 player.teleport(target.getLocation());
+            } else if (args[0].equalsIgnoreCase("tpaccept")) {
+                Player requester = TpaRequestManager.getRequester(player);
+                if (requester != null) {
+                    requester.teleport(player.getLocation());
+                    requester.sendMessage(
+                            ChatColor.GREEN + player.getName() + " heeft je teleport request geaccepteerd!");
+                    player.sendMessage(ChatColor.GREEN + "Je hebt het teleport request geaccepteerd.");
+                    TpaRequestManager.removeRequest(player);
+                } else {
+                    player.sendMessage(ChatColor.RED + "Geen teleport requests om te accepteren.");
+                }
+                return true;
             }
+
         } else if (args.length == 2) {
             // Instance of first player
             Player playerToSend = Bukkit.getPlayer(args[0]);
