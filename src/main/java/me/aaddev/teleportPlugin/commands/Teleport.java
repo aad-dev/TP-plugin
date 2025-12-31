@@ -49,6 +49,16 @@ public class Teleport implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "Geen teleport requests om te accepteren.");
                 }
                 return true;
+            } else if (args[0].equalsIgnoreCase("tpdeny")) {
+                Player requester = TpaRequestManager.getRequester(player);
+                if (requester != null) {
+                    requester.sendMessage(ChatColor.RED + player.getName() + " heeft je teleport request geweigerd.");
+                    player.sendMessage(ChatColor.YELLOW + "Je hebt het teleport request geweigerd.");
+                    TpaRequestManager.removeRequest(player);
+                } else {
+                    player.sendMessage(ChatColor.RED + "Geen teleport requests om te weigeren.");
+                }
+                return true;
             }
 
         } else if (args.length == 2) {
